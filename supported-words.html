@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>Supported Words | Mini-Akinator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css?v=2.0" />
+    <style>
+        .navbar {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .nav-link {
+            margin-right: 10px;
+            transition: opacity 0.3s;
+        }
+
+        .nav-link:hover {
+            opacity: 0.8;
+        }
+
+        .nav-link.active {
+            font-weight: bold;
+            border-bottom: 2px solid white;
+        }
+
+        .words-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .words-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .words-header h1 {
+            color: white;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .words-header p {
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        .words-table {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .table {
+            margin-bottom: 0;
+        }
+
+        .table thead {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        .table thead th {
+            border: none;
+            padding: 15px;
+            font-weight: bold;
+        }
+
+        .table tbody td {
+            padding: 12px 15px;
+            border-color: #e0e0e0;
+        }
+
+        .table tbody tr:hover {
+            background: var(--light-bg);
+        }
+
+        .word-cell {
+            font-weight: 500;
+            color: var(--primary);
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+            max-width: 500px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 10px rgba(108, 92, 231, 0.3);
+        }
+
+        .word-count {
+            color: var(--primary);
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #636e72;
+        }
+
+        @media (max-width: 768px) {
+            .words-header h1 {
+                font-size: 24px;
+            }
+
+            .table {
+                font-size: 14px;
+            }
+
+            .table thead th {
+                padding: 10px;
+            }
+
+            .table tbody td {
+                padding: 8px 10px;
+            }
+
+            .word-cell {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark navbar-expand-lg sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">🧠 Mini-Akinator</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">🎮 Game</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="supported-words.html">📝 Supported Words</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="docs.html">📖 Documentation</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="words-container">
+        <div class="words-header">
+            <h1>📝 Supported Words</h1>
+            <p>Browse all words supported by Mini-Akinator</p>
+        </div>
+
+        <div class="search-container">
+            <input 
+                type="text" 
+                class="search-input" 
+                id="searchInput" 
+                placeholder="🔍 Search words..."
+            >
+        </div>
+
+        <div class="words-table">
+            <table class="table" id="wordsTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Word</th>
+                        <th>Length</th>
+                    </tr>
+                </thead>
+                <tbody id="wordsBody">
+                    <tr>
+                        <td colspan="3" class="text-center" style="padding: 30px;">
+                            <div class="spinner"></div>
+                            <p style="margin-top: 15px; color: var(--primary);">Loading words...</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="word-count" id="wordCount"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let allWords = [];
+
+        async function loadWords() {
+            try {
+                const response = await fetch("data.json");
+                if (!response.ok) throw new Error("Failed to load data");
+                
+                const data = await response.json();
+                
+                // Extract all words from all categories and subcategories
+                Object.values(data).forEach(category => {
+                    Object.values(category.subcategories).forEach(subcategory => {
+                        allWords = allWords.concat(subcategory.words);
+                    });
+                });
+
+                // Remove duplicates and sort
+                allWords = [...new Set(allWords)].sort();
+                
+                renderTable(allWords);
+                updateWordCount(allWords.length);
+            } catch (error) {
+                console.error("Error loading words:", error);
+                document.getElementById("wordsBody").innerHTML = `
+                    <tr>
+                        <td colspan="3" class="no-results">
+                            <p>Failed to load words. Please refresh the page.</p>
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+        function renderTable(words) {
+            const tbody = document.getElementById("wordsBody");
+            
+            if (words.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="3" class="no-results">
+                            <p>No words found matching your search.</p>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = words.map((word, idx) => `
+                <tr>
+                    <td>${idx + 1}</td>
+                    <td class="word-cell">${word.toUpperCase()}</td>
+                    <td>${word.length}</td>
+                </tr>
+            `).join("");
+        }
+
+        function updateWordCount(count) {
+            document.getElementById("wordCount").textContent = `Total Words: ${count}`;
+        }
+
+        function filterWords(searchTerm) {
+            const filtered = allWords.filter(word => 
+                word.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            renderTable(filtered);
+            updateWordCount(filtered.length);
+        }
+
+        // Search functionality
+        document.getElementById("searchInput").addEventListener("input", (e) => {
+            filterWords(e.target.value);
+        });
+
+        // Load on page load
+        loadWords();
+    </script>
+</body>
+</html>

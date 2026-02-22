@@ -1,0 +1,237 @@
+{
+  "living": {
+    "priority": 1,
+    "label": "Is it living (animal or plant)?",
+    "subcategories": {
+      "animals": {
+        "priority": 1,
+        "label": "Is it an animal?",
+        "words": [
+          "bear", "lion", "wolf", "deer", "duck", "frog", "dove", "fish",
+          "bird", "moth", "wasp", "goat", "crab", "pike", "mule", "newt",
+          "swan", "puma", "wolf", "orca", "lynx", "ibis", "kiwi", "loon"
+        ]
+      },
+      "plants": {
+        "priority": 1,
+        "label": "Is it a plant?",
+        "words": [
+          "moss", "rose", "pine", "fern", "reed", "tree", "aloe", "iris",
+          "herb", "sage", "mint", "figs", "hemp", "lily", "kelp", "twig"
+        ]
+      },
+      "insects": {
+        "priority": 1,
+        "label": "Is it an insect?",
+        "words": [
+          "wasp", "moth", "flea", "tick", "mite", "ant", "bee", "gnat",
+          "lice", "louse", "dung", "bugs", "flea", "slug", "worm", "pupa"
+        ]
+      }
+    }
+  },
+  "technology": {
+    "priority": 1,
+    "label": "Is it related to technology?",
+    "subcategories": {
+      "programming": {
+        "priority": 1,
+        "label": "Is it a programming language?",
+        "words": [
+          "java", "ruby", "perl", "node", "rust", "bash", "c++", "lisp",
+          "hack", "pike", "lua", "awk", "icon", "python", "javascript", "nim"
+        ]
+      },
+      "hardware": {
+        "priority": 1,
+        "label": "Is it computer hardware?",
+        "words": [
+          "chip", "disc", "disk", "card", "wire", "port", "cpu", "gpu",
+          "hdmi", "port", "fan", "usb", "cord", "ram", "ssd", "vram"
+        ]
+      },
+      "software": {
+        "priority": 1,
+        "label": "Is it software?",
+        "words": [
+          "app", "code", "file", "game", "tool", "tool", "hook", "path",
+          "sync", "zoom", "skype", "mail", "spam", "wiki", "blog", "site"
+        ]
+      },
+      "internet": {
+        "priority": 1,
+        "label": "Is it related to the internet?",
+        "words": [
+          "site", "blog", "link", "spam", "wiki", "zoom", "twit", "post",
+          "chat", "mail", "host", "user", "feed", "page", "ping", "data"
+        ]
+      }
+    }
+  },
+  "object": {
+    "priority": 1,
+    "label": "Is it a physical object?",
+    "subcategories": {
+      "furniture": {
+        "priority": 1,
+        "label": "Is it furniture?",
+        "words": [
+          "sofa", "desk", "lamp", "crib", "bath", "sink", "chair", "door",
+          "gate", "rack", "peg", "rail", "seat", "bed", "cot", "divan"
+        ]
+      },
+      "tools": {
+        "priority": 1,
+        "label": "Is it a tool?",
+        "words": [
+          "axe", "saw", "nail", "bolt", "nut", "vice", "file", "pick",
+          "rake", "broom", "hoe", "fork", "spade", "trowel", "mallet", "awl"
+        ]
+      },
+      "clothing": {
+        "priority": 1,
+        "label": "Is it clothing?",
+        "words": [
+          "coat", "boot", "sock", "suit", "gown", "robe", "veil", "belt",
+          "cape", "hood", "tie", "shawl", "scarf", "glove", "shoe", "hat"
+        ]
+      },
+      "containers": {
+        "priority": 1,
+        "label": "Is it a container?",
+        "words": [
+          "bowl", "vase", "urn", "jug", "mug", "cup", "pot", "pan",
+          "pail", "tub", "bag", "sack", "pouch", "case", "box", "bag"
+        ]
+      }
+    }
+  },
+  "place": {
+    "priority": 1,
+    "label": "Is it a place or location?",
+    "subcategories": {
+      "geography": {
+        "priority": 1,
+        "label": "Is it a geographic location?",
+        "words": [
+          "isle", "peak", "dale", "gulf", "bank", "cave", "glen", "hill",
+          "lake", "mesa", "moor", "reef", "vale", "berg", "cove", "dune"
+        ]
+      },
+      "buildings": {
+        "priority": 1,
+        "label": "Is it a building?",
+        "words": [
+          "barn", "fort", "keep", "loft", "mall", "tent", "hut", "dome",
+          "shop", "school", "inn", "lab", "ruin", "wall", "shed", "cell"
+        ]
+      },
+      "city": {
+        "priority": 1,
+        "label": "Is it related to city?",
+        "words": [
+          "rome", "yale", "dorm", "town", "city", "zone", "hull", "area",
+          "port", "base", "site", "dump", "yard", "plot", "race", "road"
+        ]
+      }
+    }
+  },
+  "food": {
+    "priority": 1,
+    "label": "Is it food or drink?",
+    "subcategories": {
+      "fruit": {
+        "priority": 1,
+        "label": "Is it a fruit?",
+        "words": [
+          "plum", "date", "pear", "lime", "kiwi", "fig", "nectarine", "peach",
+          "melon", "berry", "grape", "lemon", "apple", "tangerine", "mango", "palm"
+        ]
+      },
+      "vegetable": {
+        "priority": 1,
+        "label": "Is it a vegetable?",
+        "words": [
+          "corn", "bean", "pea", "yam", "beet", "leek", "beet", "okra",
+          "kale", "chard", "dill", "herb", "mint", "basil", "sage", "parsnip"
+        ]
+      },
+      "meat": {
+        "priority": 1,
+        "label": "Is it meat?",
+        "words": [
+          "pork", "veal", "beef", "lamb", "duck", "fish", "crab", "tuna",
+          "ham", "steak", "bacon", "ribs", "fowl", "game", "loin", "rump"
+        ]
+      },
+      "bakery": {
+        "priority": 1,
+        "label": "Is it baked or from bakery?",
+        "words": [
+          "cake", "bread", "bun", "roll", "pie", "tart", "waffle", "crepe",
+          "loaf", "ring", "bake", "crust", "muffin", "bagel", "toast", "scone"
+        ]
+      }
+    }
+  },
+  "abstract": {
+    "priority": 1,
+    "label": "Is it an abstract concept?",
+    "subcategories": {
+      "emotion": {
+        "priority": 1,
+        "label": "Is it an emotion?",
+        "words": [
+          "fear", "hope", "love", "hate", "pain", "pity", "anger", "envy",
+          "rage", "awe", "shame", "zeal", "dread", "grief", "bliss", "glee"
+        ]
+      },
+      "quality": {
+        "priority": 1,
+        "label": "Is it a quality or characteristic?",
+        "words": [
+          "bold", "kind", "cold", "warm", "dark", "soft", "hard", "slow",
+          "fast", "wise", "dull", "sharp", "deep", "tall", "wide", "thin"
+        ]
+      },
+      "concept": {
+        "priority": 1,
+        "label": "Is it a general concept?",
+        "words": [
+          "time", "form", "role", "task", "plan", "fact", "rule", "sign",
+          "tone", "mode", "sort", "type", "kind", "way", "path", "step"
+        ]
+      }
+    }
+  },
+  "action": {
+    "priority": 1,
+    "label": "Is it an action or verb?",
+    "subcategories": {
+      "movement": {
+        "priority": 1,
+        "label": "Is it a movement action?",
+        "words": [
+          "jump", "walk", "skip", "run", "swim", "fly", "sail", "drift",
+          "hop", "trot", "pace", "roam", "trek", "wade", "creep", "lope"
+        ]
+      },
+      "communication": {
+        "priority": 1,
+        "label": "Is it a communication action?",
+        "words": [
+          "talk", "sing", "yell", "call", "chat", "chant", "chirp", "hiss",
+          "roar", "bark", "shout", "yawn", "hum", "buzz", "ring", "echo"
+        ]
+      },
+      "creation": {
+        "priority": 1,
+        "label": "Is it a creation or making action?",
+        "words": [
+          "make", "build", "craft", "forge", "weave", "paint", "draw", "form",
+          "cast", "mold", "bend", "fold", "tear", "mend", "wrap", "edit"
+        ]
+      }
+    }
+  }
+}

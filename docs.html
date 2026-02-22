@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>Documentation | Mini-Akinator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css?v=2.0" />
+    <style>
+        .navbar {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .nav-link {
+            margin-right: 10px;
+            transition: opacity 0.3s;
+        }
+
+        .nav-link:hover {
+            opacity: 0.8;
+        }
+
+        .nav-link.active {
+            font-weight: bold;
+            border-bottom: 2px solid white;
+        }
+
+        .docs-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .docs-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .docs-header h1 {
+            color: white;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .docs-header p {
+            color: #636e72;
+            font-size: 16px;
+        }
+
+        .toc {
+            background: var(--light-bg);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .toc h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+        }
+
+        .toc a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .toc a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        .doc-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .doc-section h2 {
+            color: var(--primary);
+            font-size: 28px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-bg);
+        }
+
+        .doc-section h3 {
+            color: var(--secondary);
+            font-size: 20px;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        .doc-section p {
+            color: #636e72;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .doc-section ul, .doc-section ol {
+            color: #636e72;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .code-block {
+            background: #f5f6fa;
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 15px;
+        }
+
+        .code-block code {
+            color: var(--primary);
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .feature-card {
+            background: var(--light-bg);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--success);
+        }
+
+        .feature-card strong {
+            color: var(--primary);
+        }
+
+        .highlight {
+            background: #fffacd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .docs-header h1 {
+                font-size: 24px;
+            }
+
+            .doc-section {
+                padding: 20px;
+            }
+
+            .doc-section h2 {
+                font-size: 22px;
+            }
+
+            .doc-section h3 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark navbar-expand-lg sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">🧠 Mini-Akinator</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">🎮 Game</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="supported-words.html">📝 Supported Words</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="docs.html">📖 Documentation</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="docs-container">
+        <div class="docs-header">
+            <h1>📖 Documentation</h1>
+            <p>Complete guide to Mini-Akinator game</p>
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h3>📑 Table of Contents</h3>
+            <ul>
+                <li><a href="#overview">Project Overview</a></li>
+                <li><a href="#how-to-play">How to Play</a></li>
+                <li><a href="#game-mechanics">Game Mechanics</a></li>
+                <li><a href="#categories">Categories & Words</a></li>
+                <li><a href="#scoring">Scoring System</a></li>
+                <li><a href="#technical">Technical Architecture</a></li>
+                <li><a href="#files">File Structure</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </div>
+
+        <!-- Overview Section -->
+        <div class="doc-section" id="overview">
+            <h2>🎯 Project Overview</h2>
+            <p>
+                <strong>Mini-Akinator</strong> is a fun word guessing game where the AI plays the role of Akinator—a mystical genie that tries to guess the 4-letter word you're thinking of.
+            </p>
+            <p>
+                The game uses a sophisticated category and priority system to ask smart yes/no questions, learning from your answers to improve its guessing accuracy over time.
+            </p>
+            <div class="feature-card">
+                <strong>✨ Key Features:</strong><br/>
+                💡 Smart AI logic with category-based questioning<br/>
+                🧠 Priority learning system across sessions<br/>
+                🎮 Interactive guessing with hints<br/>
+                📊 Score tracking<br/>
+                📱 Mobile-friendly design
+            </div>
+        </div>
+
+        <!-- How to Play Section -->
+        <div class="doc-section" id="how-to-play">
+            <h2>🎮 How to Play</h2>
+            <h3>Step 1: Think of a Word</h3>
+            <p>Think of any valid <span class="highlight">word</span> and click the "Done" button.</p>
+
+            <h3>Step 2: Answer Questions</h3>
+            <p>The AI will ask you a series of yes/no questions to narrow down the category of your word:</p>
+            <ul>
+                <li>First, it asks about the <strong>main category</strong> (e.g., "Is it living?")</li>
+                <li>If you answer YES, it jumps to <strong>subcategories</strong> (e.g., "Is it an animal?")</li>
+                <li>If you answer NO, it moves to the next category</li>
+            </ul>
+
+            <h3>Step 3: Guessing Phase</h3>
+            <p>Once the AI has enough information, it starts guessing. You have 3 options:</p>
+            <ul>
+                <li><strong>✓ Correct!</strong> - The AI guessed right. You lose 1 point.</li>
+                <li><strong>✗ Wrong</strong> - The AI made a mistake. Try again up to 3 times.</li>
+                <li><strong>💡 Need a Hint</strong> - Give the 3rd letter of your word. The AI gets 3 more guesses.</li>
+            </ul>
+
+            <h3>Step 4: Give Up (Optional)</h3>
+            <p>If the AI can't guess after all attempts, you can reveal your word and gain 1 point.</p>
+        </div>
+
+        <!-- Game Mechanics Section -->
+        <div class="doc-section" id="game-mechanics">
+            <h2>⚙️ Game Mechanics</h2>
+
+            <h3>Category System</h3>
+            <p>The game uses a <strong>2-level hierarchy</strong>:</p>
+            <div class="code-block">
+                <code>
+                    Main Category → Subcategory → Word Selection
+                </code>
+            </div>
+            <p>There are <strong>7 main categories</strong>:</p>
+            <ul>
+                <li>🌍 Living (animals, plants, insects)</li>
+                <li>💻 Technology (programming, hardware, software, internet)</li>
+                <li>📦 Object (furniture, tools, clothing, containers)</li>
+                <li>🗺️ Place (geography, buildings, city)</li>
+                <li>🍕 Food (fruit, vegetable, meat, bakery)</li>
+                <li>✨ Abstract (emotion, quality, concept)</li>
+                <li>⚡ Action (movement, communication, creation)</li>
+            </ul>
+
+            <h3>Priority System</h3>
+            <p>The game learns from your answers:</p>
+            <ul>
+                <li><span class="highlight">YES answer</span> → Priority increases for that category</li>
+                <li><span class="highlight">NO answer</span> → Priority stays the same</li>
+                <li><strong>Next game:</strong> Categories with higher priority are asked first</li>
+            </ul>
+
+            <h3>Guessing Logic</h3>
+            <ul>
+                <li>Words are picked <strong>randomly</strong> from the selected subcategory</li>
+                <li>Agent gets exactly <strong>3 guesses</strong></li>
+                <li>After 3 failed guesses, ask for the 3rd letter as a hint</li>
+                <li>After hint, agent gets <strong>3 more guesses</strong></li>
+            </ul>
+        </div>
+
+        <!-- Categories Section -->
+        <div class="doc-section" id="categories">
+            <h2>📚 Categories & Words</h2>
+            <p>The game contains over 500 carefully selected 4-letter words across 7 main categories and 25+ subcategories.</p>
+            <p>All words are:</p>
+            <ul>
+                
+                <li>✓ Common English words</li>
+                <li>✓ Lowercase for consistency</li>
+                <li>✓ Organized by category</li>
+            </ul>
+            <p>
+                👉 <a href="supported-words.html" style="color: var(--primary); font-weight: bold;">View all supported words →</a>
+            </p>
+        </div>
+
+        <!-- Scoring Section -->
+        <div class="doc-section" id="scoring">
+            <h2>🏆 Scoring System</h2>
+            <p>Your score changes based on the game outcome:</p>
+            <table class="table table-striped">
+                <thead style="background: var(--light-bg);">
+                    <tr>
+                        <th>Outcome</th>
+                        <th>Score Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Agent guesses correctly</td>
+                        <td><strong style="color: var(--danger);">-1</strong> (you lose a point)</td>
+                    </tr>
+                    <tr>
+                        <td>You reveal a valid word</td>
+                        <td><strong style="color: var(--success);">+1</strong> (you gain a point)</td>
+                    </tr>
+                    <tr>
+                        <td>Invalid word revealed</td>
+                        <td><strong>0</strong> (no change)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Your score is saved in your browser and persists across sessions.</p>
+        </div>
+
+        <!-- Technical Section -->
+        <div class="doc-section" id="technical">
+            <h2>💻 Technical Architecture</h2>
+            <h3>Technology Stack</h3>
+            <ul>
+                <li>🎨 <strong>Frontend:</strong> HTML5, CSS3, JavaScript (Vanilla)</li>
+                <li>🎵 <strong>Animations:</strong> GSAP (GreenSock Animation Platform)</li>
+                <li>📱 <strong>UI Framework:</strong> Bootstrap 5</li>
+                <li>💾 <strong>Storage:</strong> Browser LocalStorage</li>
+                <li>📦 <strong>Data:</strong> JSON (data.json)</li>
+            </ul>
+
+            <h3>Architecture Principles</h3>
+            <ul>
+                <li>✅ <strong>State Machine:</strong> Clear game states (INIT, CATEGORY_QUESTION, SUBCATEGORY_QUESTION, GUESSING, HINT, RESULT)</li>
+                <li>✅ <strong>Separation of Concerns:</strong> UI logic, game state, and data are separate</li>
+                <li>✅ <strong>Frontend Only:</strong> No backend server required</li>
+                <li>✅ <strong>Data Persistence:</strong> LocalStorage for priority learning and scores</li>
+            </ul>
+
+            <h3>Key Functions</h3>
+            <ul>
+                <li><code>loadCategoryData()</code> - Loads words from data.json</li>
+                <li><code>getSortedCategories()</code> - Returns categories sorted by priority</li>
+                <li><code>answerCategoryQuestion()</code> - Processes category answers</li>
+                <li><code>pickNextGuess()</code> - Random word selection</li>
+                <li><code>applyHintFilter()</code> - Filters words by 3rd letter</li>
+            </ul>
+        </div>
+
+        <!-- File Structure Section -->
+        <div class="doc-section" id="files">
+            <h2>📁 File Structure</h2>
+            <div class="code-block">
+                <code>
+word-game/<br/>
+├── index.html<br/>
+├── supported-words.html<br/>
+├── docs.html<br/>
+├── game.js<br/>
+├── style.css<br/>
+├── data.json<br/>
+└── README.md<br/>
+                </code>
+            </div>
+
+            <h3>File Descriptions</h3>
+            <ul>
+                <li><strong>index.html</strong> - Main game interface with navbar</li>
+                <li><strong>supported-words.html</strong> - Searchable table of all words</li>
+                <li><strong>docs.html</strong> - This documentation page</li>
+                <li><strong>game.js</strong> - All game logic and state management</li>
+                <li><strong>style.css</strong> - Styling and animations</li>
+                <li><strong>data.json</strong> - Word database (categories, subcategories, words)</li>
+            </ul>
+        </div>
+
+        <!-- Features Section -->
+        <div class="doc-section" id="features">
+            <h2>✨ Features</h2>
+
+            <h3>Smart AI Logic</h3>
+            <ul>
+                <li>Category-based questioning system</li>
+                <li>Priority-driven question ordering</li>
+                <li>Intelligent hint system (3rd letter filtering)</li>
+                <li>Random word selection (no cheating)</li>
+            </ul>
+
+            <h3>Learning System</h3>
+            <ul>
+                <li>Learns from player answers</li>
+                <li>Increases priority on YES answers</li>
+                <li>Persistent learning across sessions</li>
+                <li>No personal data stored (only priorities)</li>
+            </ul>
+
+            <h3>User Experience</h3>
+            <ul>
+                <li>Beautiful gradient UI</li>
+                <li>Smooth animations with GSAP</li>
+                <li>Mobile-friendly responsive design</li>
+                <li>Real-time score tracking</li>
+                <li>Question history during guessing</li>
+            </ul>
+
+            <h3>Navigation</h3>
+            <ul>
+                <li>Sticky navbar for easy navigation</li>
+                <li>Quick access to game, words, and docs</li>
+                <li>Mobile-optimized menu</li>
+            </ul>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="doc-section" id="faq">
+            <h2>❓ Frequently Asked Questions</h2>
+
+            <h3>Q: What if the AI guesses a word that doesn't exist?</h3>
+            <p><strong>A:</strong> The AI only picks words from the supported words database. If you don't recognize it, check the "Supported Words" page.</p>
+
+            <h3>Q: Can I play offline?</h3>
+            <p><strong>A:</strong> Yes! The game works entirely offline. All data is stored locally in data.json.</p>
+
+            <h3>Q: Does the game store my personal information?</h3>
+            <p><strong>A:</strong> No. The game only stores category priorities and your score in your browser's LocalStorage. No data is sent to any server.</p>
+
+            <h3>Q: How does the priority system work?</h3>
+            <p><strong>A:</strong> When you answer YES to a category question, its priority increases by 1. Next game, highest priority categories are asked first. This helps the AI learn your word patterns.</p>
+
+            <h3>Q: Why does the hint only ask for the 3rd letter?</h3>
+            <p><strong>A:</strong> The 3rd letter is statistically one of the most distinctive positions in 4-letter words, making it an effective hint without being too revealing.</p>
+
+            <h3>Q: Can I clear my score and learning data?</h3>
+            <p><strong>A:</strong> Open browser DevTools (F12) → Application → LocalStorage → Clear the "miniAkinatorPriorities" and "miniAkinatorScore" entries.</p>
+
+            <h3>Q: What if no words match after I give a hint?</h3>
+            <p><strong>A:</strong> This happens if the 3rd letter you provide has no matching words in your selected category. Try a different letter.</p>
+
+            <h3>Q: How many words are in the game?</h3>
+            <p><strong>A:</strong> Over 500 carefully selected words. Check the "Supported Words" page for the exact count.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
